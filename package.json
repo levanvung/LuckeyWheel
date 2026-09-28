@@ -1,0 +1,11 @@
+{
+  "name": "lucky-wheel-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@upstash/redis": "^1.35.0"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}

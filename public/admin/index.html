@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vòng quay nhân phẩm - Admin</title><link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+<main>
+<section id="login" class="card">
+<h1>🔐 Vòng quay nhân phẩm</h1><p>Admin: Vungwx Lê Văn</p>
+<input id="password" type="password" placeholder="Mật khẩu admin">
+<button id="loginBtn">ĐĂNG NHẬP</button>
+<div id="loginStatus"></div>
+</section>
+<section id="dashboard" class="card hidden">
+<div class="head"><h1>📊 Kết quả</h1><button id="refreshBtn">LÀM MỚI</button></div>
+<div id="count"></div>
+<table><thead><tr><th>#</th><th>Tên</th><th>Kết quả</th><th>Thời gian</th></tr></thead><tbody id="rows"></tbody></table>
+</section>
+</main>
+<script src="/admin/admin.js"></script>
+</body>
+</html>

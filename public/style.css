@@ -1,13 +1,137 @@
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#35106b,#6f1ab6,#ff7a18);display:flex;align-items:center;justify-content:center;padding:20px;color:#fff}
-.container{width:min(560px,100%)}
-.card{background:rgba(20,10,35,.82);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:28px 22px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-h1{margin:0 0 8px;font-size:28px}.sub{opacity:.8;margin:0 0 20px}
-input{width:100%;padding:15px 16px;border:0;border-radius:12px;font-size:17px;outline:none;margin-bottom:12px}
-button{width:100%;padding:15px;border:0;border-radius:12px;background:#ffd23f;color:#35106b;font-size:18px;font-weight:800;cursor:pointer}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#35106b,#6f1ab6,#ff7a18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  color:#fff;
+  overflow-x:hidden;
+}
+.container{
+  width:min(560px,100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.card{
+  width:100%;
+  background:rgba(20,10,35,.85);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  backdrop-filter:blur(8px);
+}
+h1{margin:0 0 8px;font-size:28px}
+.sub{opacity:.8;margin:0 0 20px}
+input{
+  width:100%;
+  padding:15px 16px;
+  border:0;
+  border-radius:12px;
+  font-size:17px;
+  outline:none;
+  margin-bottom:12px;
+  font-family:inherit;
+}
+button{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#ffd23f;
+  color:#35106b;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform 0.15s, background 0.15s;
+}
+button:hover:not(:disabled){
+  background:#ffe066;
+  transform:translateY(-1px);
+}
+button:active:not(:disabled){
+  transform:translateY(1px);
+}
 button:disabled{opacity:.5;cursor:not-allowed}
 .wheel-wrap{position:relative;width:min(420px,90vw);margin:28px auto 15px}
-canvas{display:block;width:100%;height:auto;border-radius:50%;box-shadow:0 10px 35px rgba(0,0,0,.4)}
-.pointer{position:absolute;z-index:2;left:50%;top:-14px;transform:translateX(-50%);font-size:38px;color:#fff;text-shadow:0 2px 4px #000}
-.status{min-height:24px;margin-top:8px;color:#ffd966}.result{font-size:26px;font-weight:900;margin-top:10px;min-height:38px}
-@media(max-width:450px){h1{font-size:23px}.card{padding:22px 15px}}
+#wheel{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:50%;
+  box-shadow:0 10px 35px rgba(0,0,0,.4);
+}
+.pointer{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:-14px;
+  transform:translateX(-50%);
+  font-size:38px;
+  color:#fff;
+  text-shadow:0 2px 4px #000;
+}
+.status{min-height:24px;margin-top:8px;color:#ffd966;font-weight:500}
+.result{
+  font-size:28px;
+  font-weight:900;
+  margin-top:10px;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.smirk-icon{
+  display:inline-block;
+  font-size:38px;
+  line-height:1;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+  animation:smirkPop 0.6s cubic-bezier(0.175,0.885,0.32,1.275) both,
+            smirkWiggle 2s ease-in-out infinite 0.7s;
+  cursor:default;
+  user-select:none;
+}
+@keyframes smirkPop{
+  0%{transform:scale(0) rotate(-20deg);opacity:0}
+  65%{transform:scale(1.4) rotate(14deg);opacity:1}
+  85%{transform:scale(0.95) rotate(-4deg)}
+  100%{transform:scale(1) rotate(0);opacity:1}
+}
+@keyframes smirkWiggle{
+  0%,100%{transform:rotate(0) scale(1)}
+  25%{transform:rotate(-12deg) scale(1.12)}
+  50%{transform:rotate(0) scale(1.05)}
+  75%{transform:rotate(12deg) scale(1.12)}
+}
+.footer{
+  margin-top:20px;
+  font-size:14px;
+  color:rgba(255,255,255,0.82);
+  text-align:center;
+  letter-spacing:0.3px;
+  font-weight:500;
+  text-shadow:0 1px 3px rgba(0,0,0,0.4);
+}
+#fireworksCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  pointer-events:none;
+  z-index:9999;
+}
+@media(max-width:450px){
+  h1{font-size:23px}
+  .card{padding:22px 15px}
+  .result{font-size:24px}
+  .smirk-icon{font-size:32px}
+  .footer{font-size:12.5px;margin-top:16px}
+}
